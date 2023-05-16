@@ -34,6 +34,10 @@ pipeline
                         bat "start /min C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe rest_app.py"
                         isSuccess = true
                     }
+                    catch (Exception e)
+                    {
+                        isSuccess = false
+                    }
                      finally
                     {
                         env.JOB1_SUCCESS = isSuccess.toString()
@@ -54,6 +58,10 @@ pipeline
                     {
                         bat "start /min C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe web_app.py"
                         isSuccess = true
+                    }
+                    catch (Exception e)
+                    {
+                        isSuccess = false
                     }
                     finally
                     {
@@ -83,6 +91,10 @@ pipeline
                         bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe backend_testing.py"
                         isSuccess = true
                     }
+                    catch (Exception e)
+                    {
+                        isSuccess = false
+                    }
                     finally
                     {
                         env.JOB3_SUCCESS = isSuccess.toString()
@@ -111,6 +123,10 @@ pipeline
                         bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe fronted_testing.py"
                         isSuccess = true
                     }
+                    catch (Exception e)
+                    {
+                        isSuccess = false
+                    }
                     finally
                     {
                         env.JOB4_SUCCESS = isSuccess.toString()
@@ -119,7 +135,8 @@ pipeline
             }
         }
 
-        stage('job 5') {
+        stage('job 5')
+        {
             when
             {
                 expression
