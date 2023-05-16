@@ -16,7 +16,7 @@ Err400 = 400
 Err500 = 500
 
 # initialize the DBConnector class
-db = DBConnector(host,port,user,password,database)
+# db = DBConnector(host,port,user,password,database)
 
 # initialize the Flask (constructor)
 app = Flask(__name__)
