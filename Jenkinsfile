@@ -168,4 +168,15 @@ pipeline
             }
         }
     }
+    post
+    {
+        failure
+        {
+            // this emailext extension doesnt work
+            emailext subject: 'Pipeline Failed',
+                     body: 'The Jenkins pipeline failed (PIP_Python_Git_Jenkins_CourseProject)',
+                     to: 'yzion10@gmail.com',
+                     from: 'yzion10@gmail.com'
+        }
+    }
 }
