@@ -18,7 +18,7 @@ pipeline
                      properties([pipelineTriggers([pollSCM('H/30 * * * *')])])
                 }
 
-                git 'https://github.com/yzion10/TestProject.git'
+                git 'https://github.com/yzion10/Python_Git_Jenkins_CourseProject.git'
             }
         }
         stage('job 1')
