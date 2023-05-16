@@ -1,7 +1,7 @@
 # This rest_app.py defines routes with rest api for create, read, update, and delete user
 # from/to the MySQL
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from db_connector import DBConnector
 import os
 import signal
@@ -72,6 +72,12 @@ def stop_server():
     return 'Server stopped'
     # return jsonify({'status': 'ok', 'message': 'Server stopped'}), Err200
 
+# Extra
+# route error handler for non-existing routes
+# return page not found 404
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("PageNotFount.html")
 
 # Run the Flask application
 app.run(host='127.0.0.1', debug=True, port=5000)

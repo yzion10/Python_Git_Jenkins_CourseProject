@@ -37,5 +37,12 @@ def stop_server():
     os.kill(os.getpid(), signal.CTRL_C_EVENT)
     return 'Server stopped'
 
+# Extra
+# route error handler for non-existing routes
+# return page not found 404
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("PageNotFount.html")
+
 # Run the Flask application
 app.run(host='127.0.0.1', debug=True, port=5001)
