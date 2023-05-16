@@ -19,7 +19,7 @@ Err500 = 500
 db = DBConnector(host,port,user,password,database)
 
 # initialize the Flask (constructor)
-# app = Flask(__name__)
+app = Flask(__name__)
 
 # 1 - POST
 @app.route('/users/<user_id>', methods=['POST'])
