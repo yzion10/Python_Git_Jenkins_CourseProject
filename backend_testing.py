@@ -2,7 +2,7 @@ import requests
 from db_connector import DBConnector
 # import clean_environment
 
-# return (true/false) if the value is in the args
+# return (true/false) if the value is in the args.
 def IsIn(value, *args):
     return value in args
 
