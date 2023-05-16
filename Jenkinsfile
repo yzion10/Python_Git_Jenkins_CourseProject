@@ -31,7 +31,7 @@ pipeline
 
                     try
                     {
-                        bat "start /min C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\rest_app.py"
+                        bat "start /min C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe rest_app.py"
                         isSuccess = true
                     }
                      finally
@@ -52,7 +52,7 @@ pipeline
 
                     try
                     {
-                        bat "start /min C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\web_app.py"
+                        bat "start /min C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe web_app.py"
                         isSuccess = true
                     }
                     finally
@@ -80,7 +80,7 @@ pipeline
 
                     try
                     {
-                        bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\backend_testing.py"
+                        bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe backend_testing.py"
                         isSuccess = true
                     }
                     finally
@@ -108,7 +108,7 @@ pipeline
 
                     try
                     {
-                        bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\fronted_testing.py"
+                        bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe fronted_testing.py"
                         isSuccess = true
                     }
                     finally
@@ -131,7 +131,7 @@ pipeline
             {
                 script
                 {
-                    bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\combined_testing.py"
+                    bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe combined_testing.py"
                 }
             }
         }
@@ -147,7 +147,7 @@ pipeline
             }
             steps
             {
-                bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\clean_environment.py"
+                bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe clean_environment.py"
             }
         }
     }
