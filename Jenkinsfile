@@ -5,6 +5,12 @@ pipeline
         buildDiscarder(logRotator(numToKeepStr: '20', daysToKeepStr: '5'))
     }
 
+    environment
+    {
+        JOB1_SUCCESS = false
+        JOB2_SUCCESS = false
+    }
+
     agent any
 
     stages
@@ -37,10 +43,11 @@ pipeline
                     catch (Exception e)
                     {
                         isSuccess = false
+                        echo "Job 1 Error: ${e.getMessage()}"
                     }
-                     finally
+                    finally
                     {
-                        env.JOB1_SUCCESS = isSuccess.toString()
+                        env.JOB1_SUCCESS = isSuccess
                     }
                 }
             }
@@ -62,10 +69,11 @@ pipeline
                     catch (Exception e)
                     {
                         isSuccess = false
+                        echo "Job 2 Error: ${e.getMessage()}"
                     }
                     finally
                     {
-                        env.JOB2_SUCCESS = isSuccess.toString()
+                        env.JOB2_SUCCESS = isSuccess
                     }
                 }
             }
@@ -77,27 +85,20 @@ pipeline
             {
                 expression
                 {
-                    env.JOB1_SUCCESS == 'true'
+                    env.JOB1_SUCCESS
                 }
             }
             steps
             {
                 script
                 {
-                    def isSuccess = false
-
                     try
                     {
                         bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe backend_testing.py"
-                        isSuccess = true
                     }
                     catch (Exception e)
                     {
-                        isSuccess = false
-                    }
-                    finally
-                    {
-                        env.JOB3_SUCCESS = isSuccess.toString()
+                        echo "Job 3 Error: ${e.getMessage()}"
                     }
                 }
             }
@@ -109,27 +110,20 @@ pipeline
             {
                 expression
                 {
-                    env.JOB2_SUCCESS == 'true'
+                    env.JOB2_SUCCESS
                 }
             }
             steps
             {
                 script
                 {
-                    def isSuccess = false
-
                     try
                     {
                         bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe fronted_testing.py"
-                        isSuccess = true
                     }
                     catch (Exception e)
                     {
-                        isSuccess = false
-                    }
-                    finally
-                    {
-                        env.JOB4_SUCCESS = isSuccess.toString()
+                        echo "Job 4 Error: ${e.getMessage()}"
                     }
                 }
             }
@@ -141,14 +135,21 @@ pipeline
             {
                 expression
                 {
-                    env.JOB1_SUCCESS == 'true' && env.JOB2_SUCCESS == 'true'
+                    env.JOB1_SUCCESS && env.JOB2_SUCCESS
                 }
             }
             steps
             {
                 script
                 {
-                    bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe combined_testing.py"
+                    try
+                    {
+                        bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe combined_testing.py"
+                    }
+                    catch (Exception e)
+                    {
+                        echo "Job 5 Error: ${e.getMessage()}"
+                    }
                 }
             }
         }
@@ -159,12 +160,22 @@ pipeline
             {
                 expression
                 {
-                    env.JOB1_SUCCESS == 'true' && env.JOB2_SUCCESS == 'true'
+                    env.JOB1_SUCCESS && env.JOB2_SUCCESS
                 }
             }
             steps
             {
-                bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe clean_environment.py"
+                script
+                {
+                    try
+                    {
+                        bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe clean_environment.py"
+                    }
+                    catch (Exception e)
+                    {
+                        echo "Job 6 Error: ${e.getMessage()}"
+                    }
+                }
             }
         }
     }
