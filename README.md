@@ -1,8 +1,8 @@
 # Python_Git_Jenkins_CourseProject
 
 This project written in:
-python language
-Groovy language for pipeline scripts
+-python language
+-Groovy language for pipeline scripts
 
 release date: 17/05/2023
 
