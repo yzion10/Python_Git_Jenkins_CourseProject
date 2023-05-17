@@ -1,5 +1,14 @@
 pipeline
 {
+    parameters
+    {
+        choice(
+            name: 'TEST_STEP_MODE',
+            choices: '3\n2\n1',
+            description: '1 – only frontend_testing.py will run\n2 – only backend_testing.py will run\n3 – only combined_testing.py will run\n\nDefault value is 3'
+        )
+    }
+
     options
     {
         buildDiscarder(logRotator(numToKeepStr: '20', daysToKeepStr: '5'))
@@ -13,10 +22,10 @@ pipeline
         {
             steps
             {
-                script
-                {
-                     properties([pipelineTriggers([pollSCM('H/30 * * * *')])])
-                }
+                //script
+                //{
+                //     properties([pipelineTriggers([pollSCM('H/30 * * * *')])])
+                //}
 
                 git 'https://github.com/yzion10/Python_Git_Jenkins_CourseProject.git'
             }
@@ -77,7 +86,7 @@ pipeline
             {
                 expression
                 {
-                    env.JOB1_SUCCESS == 'true'
+                    env.JOB1_SUCCESS == 'true' && env.TEST_STEP_MODE == '2'
                 }
             }
             steps
@@ -109,7 +118,7 @@ pipeline
             {
                 expression
                 {
-                    env.JOB2_SUCCESS == 'true'
+                    env.JOB2_SUCCESS == 'true' && env.TEST_STEP_MODE == '1'
                 }
             }
             steps
@@ -141,7 +150,7 @@ pipeline
             {
                 expression
                 {
-                    env.JOB1_SUCCESS == 'true' && env.JOB2_SUCCESS == 'true'
+                    env.JOB1_SUCCESS == 'true' && env.JOB2_SUCCESS == 'true' && env.TEST_STEP_MODE == '3'
                 }
             }
             steps
@@ -166,6 +175,17 @@ pipeline
             {
                 bat "C:\\DevOps\\GIT\\Python_Git_Jenkins_CourseProject\\venv\\Scripts\\python.exe clean_environment.py"
             }
+        }
+    }
+    post
+    {
+        failure
+        {
+            // this emailext extension doesnt work
+            emailext subject: 'Pipeline Failed',
+                     body: 'The Jenkins pipeline failed (PIP_Python_Git_Jenkins_CourseProject)',
+                     to: 'yzion10@gmail.com',
+                     from: 'yzion10@gmail.com'
         }
     }
 }
