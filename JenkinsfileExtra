@@ -5,7 +5,7 @@ pipeline
         choice(
             name: 'TEST_STEP_MODE',
             choices: '3\n2\n1',
-            description: '1 – only frontend_testing.py will run\n2 – only backend_testing.py will run\n3 – only combined_testing.py will run\n\nDefault value is 3'
+            description: '(1) only frontend_testing.py will run\n(2) only backend_testing.py will run\n(3) only combined_testing.py will run\n\nDefault value is 3'
         )
     }
 
