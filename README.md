@@ -1,12 +1,14 @@
 # Python_Git_Jenkins_CourseProject
 
-This project written in:
--python language
--Groovy language for pipeline scripts
+**Release date: 17/05/2023**
 
-release date: 17/05/2023
+**This project written in:**
 
-It combined the following files:
+python language
+
+Groovy language for pipeline scripts
+
+**It combined the following files:**
 
 db_connector.py - This file connect to a remote MySql and implements a couple of methods (INSERT,SELECT,UPDATE,DELETE)
 
