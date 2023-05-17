@@ -1,20 +1,23 @@
 import requests
 
 def stopRestServer():
+    msg = ''
     try:
         requests.get('http://127.0.0.1:5000/stop_server')
-        # res = requests.get('http://localhost:5000')
-        # if res.status_code == 200:
-        #     requests.get('http://127.0.0.1:5000/stop_server')
+        msg = 'Rest server stopped\n'
     except requests.exceptions.RequestException as ex:
-        return 'rest server didnt stop because: ', str(ex)
+        msg = 'rest server didnt stop because: \n' + str(ex) + '\n'
+    return msg
 
 def stopWebServer():
+    msg = ''
     try:
         requests.get('http://127.0.0.1:5001/stop_server')
+        msg = 'Web server stopped\n'
     except requests.exceptions.RequestException as ex:
-        return 'web server didnt stop because: ', str(ex)
+        msg = 'web server didnt stop because: \n' + str(ex)
+    return msg
 
 if __name__ == "__main__":
-    stopRestServer()
-    stopWebServer()
+    print(stopRestServer())
+    print(stopWebServer())
