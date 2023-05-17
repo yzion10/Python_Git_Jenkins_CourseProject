@@ -19,5 +19,5 @@ def stopWebServer():
     return msg
 
 if __name__ == "__main__":
-    print(stopRestServer())
-    print(stopWebServer())
+    stopRestServer()
+    stopWebServer()
