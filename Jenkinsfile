@@ -37,7 +37,7 @@ pipeline
 
                     try
                     {
-                        bat "start /min C:\Python27amd64\python.exe rest_app.py"
+                        bat "start /min C:\\Python27amd64\\python.exe rest_app.py"
                         isSuccess = true
                     }
                     catch (Exception e)
@@ -63,7 +63,7 @@ pipeline
 
                     try
                     {
-                        bat "start /min C:\Python27amd64\python.exe web_app.py"
+                        bat "start /min C:\\Python27amd64\\python.exe web_app.py"
                         isSuccess = true
                     }
                     catch (Exception e)
@@ -94,7 +94,7 @@ pipeline
                 {
                     try
                     {
-                        bat "C:\Python27amd64\python.exe backend_testing.py"
+                        bat "C:\\Python27amd64\\python.exe backend_testing.py"
                     }
                     catch (Exception e)
                     {
@@ -119,7 +119,7 @@ pipeline
                 {
                     try
                     {
-                        bat "C:\Python27amd64\python.exe fronted_testing.py"
+                        bat "C:\\Python27amd64\\python.exe fronted_testing.py"
                     }
                     catch (Exception e)
                     {
@@ -144,7 +144,7 @@ pipeline
                 {
                     try
                     {
-                        bat "C:\Python27amd64\python.exe combined_testing.py"
+                        bat "C:\\Python27amd64\\python.exe combined_testing.py"
                     }
                     catch (Exception e)
                     {
@@ -169,7 +169,7 @@ pipeline
                 {
                     try
                     {
-                        bat "C:\Python27amd64\python.exe clean_environment.py"
+                        bat "C:\\Python27amd64\\python.exe clean_environment.py"
                     }
                     catch (Exception e)
                     {
