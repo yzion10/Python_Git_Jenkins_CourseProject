@@ -1,6 +1,6 @@
 # Python_Git_Jenkins_CourseProject
 
-**Release date: 17/05/2023**
+**Release date: 21/05/2023**
 
 **This project written in:**
 
